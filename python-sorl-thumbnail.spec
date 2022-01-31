@@ -1,6 +1,7 @@
 
-Summary:	Thumbnail engine for the Django webapp system
+%define module sorl-thumbnail
 
+Summary:	Thumbnail engine for the Django webapp system
 Name:		python-sorl-thumbnail
 Version:	12.7.0
 Release:	1
@@ -18,18 +19,13 @@ Requires:	python-django
 Thumbnail engine for the Django webapp system
 
 %prep
-%setup -qc -b 0
-mv sorl-thumbnail-%{version} python3
+%autosetup -p1 -n %{module}-%{version}
 
 %build
-cd python3
 python setup.py build
-cd ..
 
 %install
-cd python3
 python setup.py install --skip-build --root=%{buildroot} 
-cd ..
 
 %files
 %{py_puresitedir}/*
