@@ -12,6 +12,7 @@ Url:		https://pypi.python.org/pypi/sorl-thumbnail
 BuildArch:	noarch
 BuildRequires:	python-setuptools
 BuildRequires:	pkgconfig(python3)
+BuildRequires:	python-pip
 BuildRequires:	python3-distribute
 Requires:	python-django
 
