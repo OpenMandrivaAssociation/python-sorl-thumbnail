@@ -4,7 +4,7 @@
 Summary:	Thumbnail engine for the Django webapp system
 Name:		python-sorl-thumbnail
 Version:	12.7.0
-Release:	2
+Release:	3
 Source0:	https://files.pythonhosted.org/packages/92/f7/3d9583bf7a5acf37d6609b8764cc979df1e17d00878538a69a5988e867fc/sorl-thumbnail-12.7.0.tar.gz
 License:	BSD
 Group:		Development/Python
