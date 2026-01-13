@@ -1,20 +1,22 @@
-
 %define module sorl-thumbnail
+%define oname sorl_thumbnail
 
 Summary:	Thumbnail engine for the Django webapp system
 Name:		python-sorl-thumbnail
-Version:	12.7.0
-Release:	3
-Source0:	https://files.pythonhosted.org/packages/92/f7/3d9583bf7a5acf37d6609b8764cc979df1e17d00878538a69a5988e867fc/sorl-thumbnail-12.7.0.tar.gz
+Version:	13.0.0
+Release:	1
 License:	BSD
 Group:		Development/Python
-Url:		https://pypi.python.org/pypi/sorl-thumbnail
+URL:		https://github.com/jazzband/sorl-thumbnail
+Source0:	https://github.com/jazzband/sorl-thumbnail/archive/%{version}/%{module}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:	noarch
-BuildRequires:	python-setuptools
-BuildRequires:	pkgconfig(python3)
-BuildRequires:	python-pip
-BuildRequires:	python3-distribute
-Requires:	python-django
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python%{pyver}dist(pillow)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(setuptools-scm)
+BuildRequires:	python%{pyver}dist(wheel)
+Requires:	python%{pyver}dist(django)
 
 %description
 Thumbnail engine for the Django webapp system
@@ -23,10 +25,14 @@ Thumbnail engine for the Django webapp system
 %autosetup -p1 -n %{module}-%{version}
 
 %build
-python setup.py build
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
+%py_build
 
 %install
-python setup.py install --skip-build --root=%{buildroot} 
+%py_install
 
 %files
-%{py_puresitedir}/*
+%doc README.rst
+%license LICENSE
+%{python_sitelib}/sorl
+%{python_sitelib}/%{oname}-%{version}.dist-info
